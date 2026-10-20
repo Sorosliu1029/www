@@ -22,4 +22,4 @@ Practising algorithms steadily is easier when the progress is visible, and writi
 
 Solutions are written in Python in Jupyter notebooks and published as a static site. The repository started in 2018 and is still updated.
 
-It sits alongside [jupyterlab-leetcode](https://github.com/Sorosliu1029/jupyterlab-leetcode), a JupyterLab extension I wrote to bring LeetCode into Jupyter.
+It sits alongside [jupyterlab-leetcode](/projects/jupyterlab-leetcode), a JupyterLab extension I wrote to bring LeetCode into Jupyter.
