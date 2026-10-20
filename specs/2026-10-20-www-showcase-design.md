@@ -166,10 +166,10 @@ ascending.
 - GitHub repository: `sorosliu/www` (exact name confirmed at setup).
 - Workflow `.github/workflows/deploy.yml`, triggered on push to `master` and by manual
   dispatch:
-  1. `withastro/action` installs, type-checks (`astro check`) and builds.
+  1. Install (`npm ci`), type-check (`astro check`), run unit tests, build.
   2. Link check over `dist/` for internal links and the project `url`s; a broken
      project URL fails the job.
-  3. `actions/deploy-pages` publishes.
+  3. `actions/upload-pages-artifact` + `actions/deploy-pages` publish.
 - Repository Pages setting: source = GitHub Actions; custom domain
   `www.sorosliu.xyz`; Enforce HTTPS on.
 - Cloudflare DNS:
