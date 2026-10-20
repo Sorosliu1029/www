@@ -21,34 +21,33 @@ describe("findBrokenInternal", () => {
 describe("checkExternal", () => {
   const fakeFetch = (impl: (url: string) => Promise<{ status: number; headers?: Headers }>) =>
     ((url: string) => impl(url)) as unknown as typeof fetch;
+  const U = "https://a.example.com";
 
   it("treats a followed redirect ending in 200 as ok", async () => {
-    expect(await checkExternal(["https://a.example.com"], fakeFetch(async () => ({ status: 200 })))).toEqual([]);
+    expect(await checkExternal([U], fakeFetch(async () => ({ status: 200 })))).toEqual({ broken: [], unverified: [] });
   });
 
   it("reports 404", async () => {
-    expect(await checkExternal(["https://a.example.com"], fakeFetch(async () => ({ status: 404 })))).toEqual([
-      { url: "https://a.example.com", status: 404 },
-    ]);
+    expect(await checkExternal([U], fakeFetch(async () => ({ status: 404 })))).toEqual({
+      broken: [{ url: U, status: 404 }],
+      unverified: [],
+    });
   });
 
-  it("treats a Cloudflare challenge as reachable", async () => {
+  it("reports a Cloudflare challenge as unverified, not broken", async () => {
     const challenged = fakeFetch(async () => ({ status: 403, headers: new Headers({ "cf-mitigated": "challenge" }) }));
-    expect(await checkExternal(["https://a.example.com"], challenged)).toEqual([]);
+    expect(await checkExternal([U], challenged)).toEqual({ broken: [], unverified: [U] });
   });
 
   it("reports a plain 403", async () => {
     const forbidden = fakeFetch(async () => ({ status: 403, headers: new Headers() }));
-    expect(await checkExternal(["https://a.example.com"], forbidden)).toEqual([{ url: "https://a.example.com", status: 403 }]);
+    expect(await checkExternal([U], forbidden)).toEqual({ broken: [{ url: U, status: 403 }], unverified: [] });
   });
 
   it("reports network errors", async () => {
-    const result = await checkExternal(
-      ["https://a.example.com"],
-      fakeFetch(async () => {
-        throw new Error("ENOTFOUND");
-      }),
-    );
-    expect(result).toEqual([{ url: "https://a.example.com", status: "error" }]);
+    const failing = fakeFetch(async () => {
+      throw new Error("ENOTFOUND");
+    });
+    expect(await checkExternal([U], failing)).toEqual({ broken: [{ url: U, status: "error" }], unverified: [] });
   });
 });

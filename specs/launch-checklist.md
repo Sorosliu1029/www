@@ -5,13 +5,14 @@ Manual steps that need your GitHub and Cloudflare accounts. Work through them in
 ## 1. GitHub repository
 
 - [ ] Create the repo `Sorosliu1029/www` (public; any name works, it doesn't affect the domain).
+- [ ] Repo → Settings → Pages → **Source: GitHub Actions**. Do this before the first push,
+  otherwise the first deploy run fails.
+- [ ] Same page → **Custom domain:** `www.sorosliu.xyz`, then Save.
 - [ ] Add the remote and push `master`:
   ```sh
   git remote add origin git@github.com:Sorosliu1029/www.git
   git push -u origin master
   ```
-- [ ] Repo → Settings → Pages → **Source: GitHub Actions**.
-- [ ] Same page → **Custom domain:** `www.sorosliu.xyz`, then Save.
 
 ## 2. Cloudflare DNS
 
@@ -29,7 +30,11 @@ Manual steps that need your GitHub and Cloudflare accounts. Work through them in
 Every `*.sorosliu.xyz` project currently answers non-browser clients with a Cloudflare managed
 challenge (HTTP 403, `cf-mitigated: challenge`). Consequences:
 
-- The deploy's link check accepts this as "site is up", so deploys are not blocked.
+- The deploy's link check reports these URLs as **unverified** (a `?` line in the log) and does
+  not block the deploy. The challenge is served by Cloudflare's edge, so a project whose GitHub
+  Pages site was deleted would still look "challenged", not broken. To get real checks, add a WAF
+  custom rule that skips the challenge when a request carries a secret header, store the secret as
+  a repo Actions secret, and have the link check send it.
 - `npm run shots` cannot capture screenshots (every capture times out on the challenge page).
 - Link previews (Slack, Telegram, X) and search crawlers may also be challenged.
 

@@ -16,12 +16,15 @@ async function main(): Promise<void> {
       ),
     ),
   ];
-  const external = await checkExternal(projectUrls);
+  const { broken, unverified } = await checkExternal(projectUrls);
 
   for (const href of internal) console.error(`✗ internal: ${href}`);
-  for (const { url, status } of external) console.error(`✗ project: ${url} (${status})`);
-  console.log(`checked ${projectUrls.length} project URL(s); ${internal.length + external.length} broken`);
-  if (internal.length + external.length > 0) process.exit(1);
+  for (const { url, status } of broken) console.error(`✗ project: ${url} (${status})`);
+  for (const url of unverified) console.warn(`? project: ${url} (Cloudflare challenge — origin not verified)`);
+  console.log(
+    `checked ${projectUrls.length} project URL(s); ${internal.length + broken.length} broken, ${unverified.length} unverified`,
+  );
+  if (internal.length + broken.length > 0) process.exit(1);
 }
 
 main();

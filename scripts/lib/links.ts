@@ -38,23 +38,26 @@ export function findBrokenInternal(distDir: string): string[] {
 }
 
 /**
- * Returns only the failures: a final status >= 400 or a network error. Redirects are followed.
- * A Cloudflare bot challenge (403 + `cf-mitigated: challenge`) means the site is up, so it passes.
+ * Fetches each URL, following redirects. `broken`: a final status >= 400 or a network error.
+ * `unverified`: a Cloudflare bot challenge (403 + `cf-mitigated: challenge`). The challenge is
+ * served at Cloudflare's edge, so it proves DNS works but says nothing about the origin.
  */
 export async function checkExternal(
   urls: string[],
   fetchFn: typeof fetch = fetch,
-): Promise<{ url: string; status: number | "error" }[]> {
-  const results = await Promise.all(
+): Promise<{ broken: { url: string; status: number | "error" }[]; unverified: string[] }> {
+  const broken: { url: string; status: number | "error" }[] = [];
+  const unverified: string[] = [];
+  await Promise.all(
     urls.map(async (url) => {
       try {
         const res = await fetchFn(url, { redirect: "follow", signal: AbortSignal.timeout(15000) });
-        if (res.status === 403 && res.headers?.get("cf-mitigated") === "challenge") return { url, status: 200 };
-        return { url, status: res.status as number | "error" };
+        if (res.status === 403 && res.headers?.get("cf-mitigated") === "challenge") unverified.push(url);
+        else if (res.status >= 400) broken.push({ url, status: res.status });
       } catch {
-        return { url, status: "error" as const };
+        broken.push({ url, status: "error" });
       }
     }),
   );
-  return results.filter((r) => r.status === "error" || r.status >= 400);
+  return { broken, unverified };
 }
