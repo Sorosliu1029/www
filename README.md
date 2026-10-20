@@ -7,16 +7,16 @@ The homepage of [sorosliu.xyz](https://www.sorosliu.xyz). It presents my project
 | Subdomain | What it is |
 | --- | --- |
 | [bible](https://bible.sorosliu.xyz) | Two-year Bible reading calendar with `.ics` export and a printable checklist |
-| [cosmos-wormhole](https://cosmos-wormhole.sorosliu.xyz) | Unofficial Python SDK for the 小宇宙 podcast API |
-| [euler](https://euler.sorosliu.xyz) | My Project Euler solutions, in Jupyter notebooks |
-| [explore-git](https://explore-git.sorosliu.xyz) | A hands-on walk through Git's internals |
-| [gottee](https://gottee.sorosliu.xyz) | My tiny coffee shop in Midtown Atlanta |
-| [jike-metro](https://jike-metro.sorosliu.xyz) | Unofficial Python SDK for 即刻 (Jike) |
 | [jupyterlab-leetcode](https://jupyterlab-leetcode.sorosliu.xyz) | JupyterLab extension that turns LeetCode questions into notebooks you can run and submit |
 | [leetcode](https://leetcode.sorosliu.xyz) | My LeetCode solutions and progress overview |
-| [sicp](https://sicp.sorosliu.xyz/book/book.html) | Working through *SICP*, 2nd edition, as a book in progress |
+| [gottee](https://gottee.sorosliu.xyz) | My tiny coffee shop in Atlanta |
+| [cosmos-wormhole](https://cosmos-wormhole.sorosliu.xyz) | Unofficial Python SDK for the 小宇宙 podcast API |
 | [slides](https://slides.sorosliu.xyz) | Slide decks from talks I've given |
 | [wereadou](https://wereadou.sorosliu.xyz) | Browser extension showing WeRead availability on Douban book pages |
+| [sicp](https://sicp.sorosliu.xyz/book/book.html) | Working through SICP, 2nd edition, as a book in progress |
+| [explore-git](https://explore-git.sorosliu.xyz) | A hands-on walk through Git's internals |
+| [jike-metro](https://jike-metro.sorosliu.xyz) | Unofficial Python SDK for 即刻 (Jike) |
+| [euler](https://euler.sorosliu.xyz) | My Project Euler solutions, in Jupyter notebooks |
 
 ## How it works
 
