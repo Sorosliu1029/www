@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import { links } from "../data/links";
+---
+
+<Base title="About" description="About Soros Liu.">
+  <div class="container about">
+    <h1>About</h1>
+    <!-- TODO(soros): write bio -->
+    <p class="bio">
+      I'm Soros Liu. I build small tools and sites for reading, learning, and exploring ideas. This page will say
+      more soon.
+    </p>
+    <h2>Elsewhere</h2>
+    <ul class="links">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href}>{l.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .about {
+    max-width: 42em;
+    margin-inline: auto;
+  }
+  .about h1 {
+    margin-top: 16px;
+  }
+  .about h2 {
+    font-size: 1.1rem;
+    margin-top: 2em;
+  }
+  .links {
+    padding-left: 1.2em;
+  }
+</style>
