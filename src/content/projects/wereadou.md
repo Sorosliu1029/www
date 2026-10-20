@@ -4,7 +4,7 @@ tagline: 在豆瓣读书页面上显示微信读书的可读状态的浏览器�
 url: https://wereadou.sorosliu.xyz
 repo: https://github.com/Sorosliu1029/weReaDou
 lang: zh
-year: 2020
+year: 2025
 tags: [browser-extension, douban, weread]
 stack: [TypeScript, Swift]
 draft: false

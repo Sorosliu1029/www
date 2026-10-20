@@ -8,6 +8,7 @@ year: 2025
 tags: [leetcode, jupyterlab-extension, notebooks]
 stack: [TypeScript, React, Python, Jupyter]
 draft: false
+featured: true
 ---
 
 ## What it is

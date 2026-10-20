@@ -4,7 +4,7 @@ tagline: Slide decks from talks I've given — Git internals, B+ trees, Redis pe
 url: https://slides.sorosliu.xyz
 repo: https://github.com/Sorosliu1029/Slides
 lang: en
-year: 2018
+year: 2021
 tags: [talks, slides]
 stack: [reveal.js, HTML]
 draft: false
