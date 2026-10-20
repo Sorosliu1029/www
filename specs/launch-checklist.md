@@ -27,21 +27,16 @@ Manual steps that need your GitHub and Cloudflare accounts. Work through them in
 
 ## 3. Cloudflare bot challenge on the project subdomains
 
-Every `*.sorosliu.xyz` project currently answers non-browser clients with a Cloudflare managed
-challenge (HTTP 403, `cf-mitigated: challenge`). Consequences:
+- [x] Turn off **Bot Fight Mode** (Security → Bots). Done 2026-10-20.
 
-- The deploy's link check reports these URLs as **unverified** (a `?` line in the log) and does
-  not block the deploy. The challenge is served by Cloudflare's edge, so a project whose GitHub
-  Pages site was deleted would still look "challenged", not broken. To get real checks, add a WAF
-  custom rule that skips the challenge when a request carries a secret header, store the secret as
-  a repo Actions secret, and have the link check send it.
-- `npm run shots` cannot capture screenshots (every capture times out on the challenge page).
-- Link previews (Slack, Telegram, X) and search crawlers may also be challenged.
+With Bot Fight Mode on, every `*.sorosliu.xyz` project answered non-browser clients with a
+Cloudflare managed challenge (HTTP 403, `cf-mitigated: challenge`). `npm run shots` timed out on
+every site, link previews and search crawlers were challenged, and the deploy's link check could
+only report the project URLs as **unverified**. With it off, all of these work, and the link check
+reports `0 unverified`.
 
-Decide whether you want that. To allow screenshots, either relax the setting (Security → Bots /
-Security Level) for the project subdomains, or add a WAF custom rule that skips the challenge for
-your own IP while you run `npm run shots`. Or take screenshots by hand: 1280×800, saved as
-`public/shots/<slug>.webp`.
+If `?` (unverified) lines come back in the deploy log, or `npm run shots` starts timing out,
+something has turned the challenge on again: check Bot Fight Mode and Security Level first.
 
 ## 4. Content
 
@@ -50,7 +45,7 @@ your own IP while you run `npm run shots`. Or take screenshots by hand: 1280×80
 - [x] Write the homepage intro (`src/pages/index.astro`) and the About bio (`src/pages/about.astro`).
 - [x] Add Telegram and email to `src/data/links.ts` if you want them.
 - [x] Pick `featured: true` projects (currently only SICP).
-- [x] Add screenshots (see §3), or keep the generated covers.
+- [x] Add screenshots: `npm run shots`, then commit `public/shots/` (PR #4). Re-run it to refresh them.
 - [x] Set `draft: false` on each project you want live. `npm run dev` shows drafts; production hides them.
 - [x] Push. The Action runs check → tests → build → link check → deploy.
 
