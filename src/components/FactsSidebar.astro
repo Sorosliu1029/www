@@ -1,0 +1,91 @@
+---
+import type { Project } from "../lib/schema";
+
+interface Props {
+  data: Project;
+}
+
+const { url, repo, year, stack, tags } = Astro.props.data;
+---
+
+<aside class="facts" lang="en">
+  <a class="visit" href={url}>Visit ↗</a>
+  <dl>
+    <dt>Year</dt>
+    <dd>{year}</dd>
+    {
+      stack.length > 0 && (
+        <>
+          <dt>Stack</dt>
+          <dd>{stack.join(", ")}</dd>
+        </>
+      )
+    }
+    {
+      tags.length > 0 && (
+        <>
+          <dt>Tags</dt>
+          <dd class="tags">
+            {tags.map((t) => (
+              <span class="tag">{t}</span>
+            ))}
+          </dd>
+        </>
+      )
+    }
+    {
+      repo && (
+        <>
+          <dt>Source</dt>
+          <dd>
+            <a class="source" href={repo}>
+              {new URL(repo).hostname.replace(/^www\./, "")} ↗
+            </a>
+          </dd>
+        </>
+      )
+    }
+  </dl>
+</aside>
+
+<style>
+  .facts {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 0.9rem;
+  }
+  .visit {
+    display: block;
+    text-align: center;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .visit:hover {
+    opacity: 0.85;
+  }
+  dl {
+    margin: 16px 0 0;
+  }
+  dt {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+  dd {
+    margin: 2px 0 0;
+    overflow-wrap: anywhere;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+</style>
