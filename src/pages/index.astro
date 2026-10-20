@@ -1,3 +1,57 @@
 ---
+import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getVisibleProjects } from "../lib/collection";
+
+const projects = await getVisibleProjects();
 ---
-<html lang="en"><head><title>Soros Liu</title></head><body></body></html>
+
+<Base title="" description="Soros Liu — projects on sorosliu.xyz.">
+  <div class="container">
+    <!-- TODO(soros): write intro -->
+    <section class="intro">
+      <h1>Soros Liu</h1>
+      <p class="muted">Software, books, and side projects — each one lives on its own corner of sorosliu.xyz.</p>
+    </section>
+    {
+      projects.length > 0 ? (
+        <section class="grid">
+          {projects.map((p) => (
+            <ProjectCard project={p} />
+          ))}
+        </section>
+      ) : (
+        <p class="empty muted">Projects coming soon.</p>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .intro {
+    padding-block: 32px 28px;
+  }
+  .intro h1 {
+    font-size: 1.75rem;
+    margin: 0 0 4px;
+  }
+  .intro p {
+    margin: 0;
+    max-width: 40em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

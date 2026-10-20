@@ -1,0 +1,39 @@
+---
+import { placeholderGradient } from "../lib/projects";
+
+interface Props {
+  slug: string;
+  title: string;
+}
+
+const { slug, title } = Astro.props;
+const g = placeholderGradient(slug);
+---
+
+<div class="placeholder" style={`background: linear-gradient(${g.angle}deg, ${g.from}, ${g.to})`}>
+  <span>{title}</span>
+</div>
+
+<style>
+  .placeholder {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+  }
+  .placeholder span {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: rgb(0 0 0 / 0.55);
+  }
+  @media (prefers-color-scheme: dark) {
+    .placeholder {
+      filter: brightness(0.55) saturate(1.2);
+    }
+    .placeholder span {
+      color: rgb(255 255 255 / 0.85);
+    }
+  }
+</style>

@@ -4,16 +4,18 @@ import { join } from "node:path";
 import { parse, type HTMLElement } from "node-html-parser";
 
 export const OUT = "test-dist";
+export const EMPTY_OUT = "test-dist-empty";
 
 export function buildInto(outDir: string, projectsDir: string): void {
   execFileSync("npx", ["astro", "build"], {
-    env: { ...process.env, PROJECTS_DIR: projectsDir, OUT_DIR: outDir },
+    env: { ...process.env, NODE_ENV: "production", PROJECTS_DIR: projectsDir, OUT_DIR: outDir },
     stdio: "pipe",
   });
 }
 
 export default function setup(): void {
   buildInto(OUT, "tests/fixtures/projects");
+  buildInto(EMPTY_OUT, "tests/fixtures/empty");
 }
 
 export function pageFile(route: string, outDir = OUT): string {

@@ -1,0 +1,90 @@
+---
+import type { VisibleProject } from "../lib/collection";
+import Placeholder from "./Placeholder.astro";
+
+interface Props {
+  project: VisibleProject;
+}
+
+const { entry, cover } = Astro.props.project;
+const { title, tagline, tags, lang } = entry.data;
+---
+
+<a class="card" href={`/projects/${entry.id}`}>
+  <div class="cover">
+    {
+      cover ? (
+        <img src={cover} alt={`Screenshot of ${title}`} width="1280" height="800" loading="lazy" />
+      ) : (
+        <Placeholder slug={entry.id} title={title} />
+      )
+    }
+  </div>
+  <div class="body" lang={lang}>
+    <h2>{title}</h2>
+    <p class="tagline">{tagline}</p>
+    {
+      tags.length > 0 && (
+        <p class="tags">
+          {tags.slice(0, 3).map((t) => (
+            <span class="tag">{t}</span>
+          ))}
+        </p>
+      )
+    }
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    transition:
+      border-color 0.15s,
+      transform 0.15s;
+  }
+  .card:hover {
+    border-color: var(--muted);
+    transform: translateY(-2px);
+  }
+  .card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .cover {
+    aspect-ratio: 16 / 10;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .body {
+    padding: 12px 14px 14px;
+    min-width: 0;
+  }
+  h2 {
+    font-size: 1.05rem;
+    margin: 0 0 2px;
+  }
+  .tagline {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 0;
+  }
+</style>
