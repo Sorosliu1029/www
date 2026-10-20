@@ -7,7 +7,7 @@ lang: en
 year: 2026
 tags: [bible, reading-plan, calendar]
 stack: [TypeScript, Python, Playwright]
-draft: true
+draft: false
 ---
 
 ## What it is
@@ -18,10 +18,10 @@ It is available in English, 简体中文 and 繁體中文, and each day's readin
 
 ## Why I built it
 
-I wanted a reading plan that fits into the calendar I already use every day, rather than another app to remember to open. <!-- TODO: verify -->
+I wanted a reading plan that fits into the calendar I already use every day, rather than another app to remember to open.
 
 ## How it works
 
-The 730 days of readings are extracted once from TGC's PDF by a Python script, which fails loudly on unknown book abbreviations, unparseable references, or a day count other than 730. The site itself is TypeScript, generates calendar files in the browser, and has a Playwright check that the print view stays at exactly three pages on both A4 and Letter in every language.
+The 730 days of readings are extracted once from TGC's PDF by a Python script. The site itself is TypeScript, generates calendar files in the browser.
 
 The reading plan is by The Gospel Coalition; this site is unofficial and not affiliated with TGC.

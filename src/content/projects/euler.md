@@ -7,7 +7,7 @@ lang: en
 year: 2017
 tags: [math, project-euler, notebooks]
 stack: [Python, Jupyter]
-draft: true
+draft: false
 ---
 
 ## What it is
@@ -16,10 +16,10 @@ A long-running notebook of my attempts at [Project Euler](https://projecteuler.n
 
 ## Why I built it
 
-Project Euler is a fun, recreational way to wander into unfamiliar areas of mathematics. Keeping my work in notebooks lets me revisit how I reasoned about a problem, not just the final number. <!-- TODO: verify -->
+Project Euler is a fun, recreational way to wander into unfamiliar areas of mathematics. Keeping my work in notebooks lets me revisit how I reasoned about a problem, not just the final number.
 
 ## How it works
 
-Each problem is solved in Python inside a Jupyter notebook, and the notebooks are published as a static site. The repository started in 2017 and was still being updated in 2025.
+Each problem is solved in Python inside a Jupyter notebook, and the notebooks are published as a static site.
 
 A note in the spirit of Project Euler: please don't copy solutions. The point of each problem is the process of solving it yourself.

@@ -7,7 +7,8 @@ lang: zh
 year: 2020
 tags: [browser-extension, douban, weread]
 stack: [TypeScript, Swift]
-draft: true
+draft: false
+featured: true
 ---
 
 ## 是什么
@@ -18,8 +19,8 @@ weReaDou 是一个浏览器插件：在豆瓣读书的页面上，直接显示�
 
 ## 为什么做
 
-在豆瓣上找书、在微信读书上读书，来回切换查一本书能不能读很麻烦。<!-- TODO: verify -->
+在豆瓣上找书、在微信读书上读书，来回切换查一本书能不能读很麻烦。
 
 ## 怎么做的
 
-插件在豆瓣读书页面中注入与页面风格融为一体的界面，查询微信读书的搜索结果，并对搜索结果做匹配过滤，找到对应的那本书。代码以 TypeScript 为主，仓库中的 Swift 代码可能用于 Safari 版本。<!-- TODO: verify — Swift 部分的用途 -->
+插件在豆瓣读书页面中注入与页面风格融为一体的界面，查询微信读书的搜索结果，并对搜索结果做匹配过滤，找到对应的那本书。

@@ -7,7 +7,7 @@ lang: zh
 year: 2018
 tags: [jike, sdk, python]
 stack: [Python, requests]
-draft: true
+draft: false
 ---
 
 ## 是什么
@@ -18,7 +18,7 @@ Jike Metro 🚇 是即刻镇的地铁工程，旨在提高即友的出行游览�
 
 ## 为什么做
 
-作为即刻的重度用户，想用代码来浏览、整理和发布即刻上的内容。<!-- TODO: verify -->
+作为即刻的重度用户，想用代码来浏览、整理和发布即刻上的内容。
 
 ## 怎么做的
 

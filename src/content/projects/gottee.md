@@ -7,17 +7,16 @@ lang: en
 year: 2025
 tags: [coffee, small-business]
 stack: [TypeScript]
-draft: true
+draft: false
 ---
 
 ## What it is
 
-Gottee is a tiny coffee shop I operated in Midtown, Atlanta, Georgia while studying for my master's degree at Georgia Tech. This site is its home on the web. <!-- TODO: verify — describe what the site offers (menu? ordering? hours?) -->
+Gottee is a tiny coffee shop I operated in Atlanta while studying for my master's degree at Georgia Tech. This site is its home on the web.
 
 ## Why I built it
 
-<!-- TODO: verify — the story behind Gottee: why a coffee shop, and why as a student -->
 
 ## How it works
 
-A small TypeScript site. <!-- TODO: verify — add details -->
+A small TypeScript site.

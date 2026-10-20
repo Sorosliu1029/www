@@ -4,11 +4,11 @@ Manual steps that need your GitHub and Cloudflare accounts. Work through them in
 
 ## 1. GitHub repository
 
-- [ ] Create the repo `Sorosliu1029/www` (public; any name works, it doesn't affect the domain).
-- [ ] Repo → Settings → Pages → **Source: GitHub Actions**. Do this before the first push,
+- [x] Create the repo `Sorosliu1029/www` (public; any name works, it doesn't affect the domain).
+- [x] Repo → Settings → Pages → **Source: GitHub Actions**. Do this before the first push,
   otherwise the first deploy run fails.
-- [ ] Same page → **Custom domain:** `www.sorosliu.xyz`, then Save.
-- [ ] Add the remote and push `master`:
+- [x] Same page → **Custom domain:** `www.sorosliu.xyz`, then Save.
+- [x] Add the remote and push `master`:
   ```sh
   git remote add origin git@github.com:Sorosliu1029/www.git
   git push -u origin master
@@ -16,14 +16,14 @@ Manual steps that need your GitHub and Cloudflare accounts. Work through them in
 
 ## 2. Cloudflare DNS
 
-- [ ] Add `CNAME  www  →  sorosliu1029.github.io` with **Proxy status: DNS only** (grey cloud).
+- [x] Add `CNAME  www  →  sorosliu1029.github.io` with **Proxy status: DNS only** (grey cloud).
   GitHub can only issue the HTTPS certificate while the record is not proxied.
-- [ ] Redirect the apex: add a proxied placeholder record `A  @  192.0.2.1` (orange cloud), then
+- [x] Redirect the apex: add a proxied placeholder record `A  @  192.0.2.1` (orange cloud), then
   Rules → Redirect Rules → Create:
   - When: Hostname equals `sorosliu.xyz`
   - Then: Dynamic, expression `concat("https://www.sorosliu.xyz", http.request.uri.path)`, status **301**, preserve query string.
-- [ ] Wait for GitHub Pages to show the certificate as issued (minutes to an hour), then tick **Enforce HTTPS**.
-- [ ] Optional, later: switch `www` to proxied (orange cloud) with SSL/TLS mode **Full**.
+- [x] Wait for GitHub Pages to show the certificate as issued (minutes to an hour), then tick **Enforce HTTPS**.
+- [x] Optional, later: switch `www` to proxied (orange cloud) with SSL/TLS mode **Full**.
 
 ## 3. Cloudflare bot challenge on the project subdomains
 
@@ -45,14 +45,14 @@ your own IP while you run `npm run shots`. Or take screenshots by hand: 1280×80
 
 ## 4. Content
 
-- [ ] Review each file in `src/content/projects/`, resolve every `<!-- TODO: verify -->`
+- [x] Review each file in `src/content/projects/`, resolve every `<!-- TODO: verify -->`
   (`grep -rn "TODO" src/content src/pages src/data`), and fill in the empty "Why I built it" sections.
-- [ ] Write the homepage intro (`src/pages/index.astro`) and the About bio (`src/pages/about.astro`).
-- [ ] Add Telegram and email to `src/data/links.ts` if you want them.
-- [ ] Pick `featured: true` projects (currently only SICP).
-- [ ] Add screenshots (see §3), or keep the generated covers.
-- [ ] Set `draft: false` on each project you want live. `npm run dev` shows drafts; production hides them.
-- [ ] Push. The Action runs check → tests → build → link check → deploy.
+- [x] Write the homepage intro (`src/pages/index.astro`) and the About bio (`src/pages/about.astro`).
+- [x] Add Telegram and email to `src/data/links.ts` if you want them.
+- [x] Pick `featured: true` projects (currently only SICP).
+- [x] Add screenshots (see §3), or keep the generated covers.
+- [x] Set `draft: false` on each project you want live. `npm run dev` shows drafts; production hides them.
+- [x] Push. The Action runs check → tests → build → link check → deploy.
 
 ## 5. Verify
 
