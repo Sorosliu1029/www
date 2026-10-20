@@ -12,6 +12,7 @@ The homepage of [sorosliu.xyz](https://www.sorosliu.xyz). It presents my project
 | [explore-git](https://explore-git.sorosliu.xyz) | A hands-on walk through Git's internals |
 | [gottee](https://gottee.sorosliu.xyz) | My tiny coffee shop in Midtown Atlanta |
 | [jike-metro](https://jike-metro.sorosliu.xyz) | Unofficial Python SDK for 即刻 (Jike) |
+| [jupyterlab-leetcode](https://jupyterlab-leetcode.sorosliu.xyz) | JupyterLab extension that turns LeetCode questions into notebooks you can run and submit |
 | [leetcode](https://leetcode.sorosliu.xyz) | My LeetCode solutions and progress overview |
 | [sicp](https://sicp.sorosliu.xyz/book/book.html) | Working through *SICP*, 2nd edition, as a book in progress |
 | [slides](https://slides.sorosliu.xyz) | Slide decks from talks I've given |

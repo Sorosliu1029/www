@@ -24,7 +24,7 @@ describe("isPublished", () => {
   });
 });
 
-const slugs = ["bible", "cosmos-wormhole", "euler", "explore-git", "gottee", "jike-metro", "leetcode", "sicp", "slides", "wereadou"];
+const slugs = ["bible", "cosmos-wormhole", "euler", "explore-git", "gottee", "jike-metro", "jupyterlab-leetcode", "leetcode", "sicp", "slides", "wereadou"];
 
 describe("placeholderGradient", () => {
   it("is deterministic", () => {
