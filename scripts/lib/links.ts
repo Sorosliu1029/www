@@ -37,7 +37,10 @@ export function findBrokenInternal(distDir: string): string[] {
   return [...broken];
 }
 
-/** Returns only the failures: a final status >= 400 or a network error. Redirects are followed. */
+/**
+ * Returns only the failures: a final status >= 400 or a network error. Redirects are followed.
+ * A Cloudflare bot challenge (403 + `cf-mitigated: challenge`) means the site is up, so it passes.
+ */
 export async function checkExternal(
   urls: string[],
   fetchFn: typeof fetch = fetch,
@@ -46,6 +49,7 @@ export async function checkExternal(
     urls.map(async (url) => {
       try {
         const res = await fetchFn(url, { redirect: "follow", signal: AbortSignal.timeout(15000) });
+        if (res.status === 403 && res.headers?.get("cf-mitigated") === "challenge") return { url, status: 200 };
         return { url, status: res.status as number | "error" };
       } catch {
         return { url, status: "error" as const };

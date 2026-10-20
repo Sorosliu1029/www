@@ -1,2 +1,1 @@
-// TODO(soros): confirm GitHub handle
-export const GITHUB_URL = "https://github.com/sorosliu";
+export const GITHUB_URL = "https://github.com/Sorosliu1029";

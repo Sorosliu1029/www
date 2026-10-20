@@ -19,7 +19,7 @@ describe("findBrokenInternal", () => {
 });
 
 describe("checkExternal", () => {
-  const fakeFetch = (impl: (url: string) => Promise<{ status: number }>) =>
+  const fakeFetch = (impl: (url: string) => Promise<{ status: number; headers?: Headers }>) =>
     ((url: string) => impl(url)) as unknown as typeof fetch;
 
   it("treats a followed redirect ending in 200 as ok", async () => {
@@ -30,6 +30,16 @@ describe("checkExternal", () => {
     expect(await checkExternal(["https://a.example.com"], fakeFetch(async () => ({ status: 404 })))).toEqual([
       { url: "https://a.example.com", status: 404 },
     ]);
+  });
+
+  it("treats a Cloudflare challenge as reachable", async () => {
+    const challenged = fakeFetch(async () => ({ status: 403, headers: new Headers({ "cf-mitigated": "challenge" }) }));
+    expect(await checkExternal(["https://a.example.com"], challenged)).toEqual([]);
+  });
+
+  it("reports a plain 403", async () => {
+    const forbidden = fakeFetch(async () => ({ status: 403, headers: new Headers() }));
+    expect(await checkExternal(["https://a.example.com"], forbidden)).toEqual([{ url: "https://a.example.com", status: 403 }]);
   });
 
   it("reports network errors", async () => {

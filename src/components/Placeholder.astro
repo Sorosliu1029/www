@@ -29,8 +29,9 @@ const g = placeholderGradient(slug);
     color: rgb(0 0 0 / 0.55);
   }
   @media (prefers-color-scheme: dark) {
+    /* Darken the gradient without dimming the label (a filter would affect both). */
     .placeholder {
-      filter: brightness(0.55) saturate(1.2);
+      box-shadow: inset 0 0 0 100vmax rgb(0 0 0 / 0.5);
     }
     .placeholder span {
       color: rgb(255 255 255 / 0.85);
