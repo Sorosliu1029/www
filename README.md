@@ -15,6 +15,7 @@ The homepage of [sorosliu.xyz](https://www.sorosliu.xyz). It presents my project
 | [wereadou](https://wereadou.sorosliu.xyz) | Browser extension showing WeRead availability on Douban book pages |
 | [sicp](https://sicp.sorosliu.xyz/book/book.html) | Working through SICP, 2nd edition, as a book in progress |
 | [explore-git](https://explore-git.sorosliu.xyz) | A hands-on walk through Git's internals |
+| [follower-change](https://follower-change.sorosliu.xyz) | GitHub Action that tells you who followed and who unfollowed you |
 | [jike-metro](https://jike-metro.sorosliu.xyz) | Unofficial Python SDK for 即刻 (Jike) |
 | [euler](https://euler.sorosliu.xyz) | My Project Euler solutions, in Jupyter notebooks |
 
