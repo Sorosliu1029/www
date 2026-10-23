@@ -7,6 +7,7 @@ The homepage of [sorosliu.xyz](https://www.sorosliu.xyz). It presents my project
 | Subdomain | What it is |
 | --- | --- |
 | [bible](https://bible.sorosliu.xyz) | Two-year Bible reading calendar with `.ics` export and a printable checklist |
+| [anki-eudic](https://anki-eudic.sorosliu.xyz) | Terminal app that turns Eudic study lists into Anki decks, with Longman definitions and audio |
 | [jupyterlab-leetcode](https://jupyterlab-leetcode.sorosliu.xyz) | JupyterLab extension that turns LeetCode questions into notebooks you can run and submit |
 | [leetcode](https://leetcode.sorosliu.xyz) | My LeetCode solutions and progress overview |
 | [gottee](https://gottee.sorosliu.xyz) | My tiny coffee shop in Atlanta |
