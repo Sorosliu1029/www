@@ -7,6 +7,7 @@ year: 2026
 tags: [podcast, web-app, browser-extension]
 stack: [TypeScript, React, Cloudflare Workers]
 draft: false
+featured: true
 ---
 
 ## 是什么
