@@ -11,6 +11,7 @@ The homepage of [sorosliu.xyz](https://www.sorosliu.xyz). It presents my project
 | [jupyterlab-leetcode](https://jupyterlab-leetcode.sorosliu.xyz) | JupyterLab extension that turns LeetCode questions into notebooks you can run and submit |
 | [leetcode](https://leetcode.sorosliu.xyz) | My LeetCode solutions and progress overview |
 | [gottee](https://gottee.sorosliu.xyz) | My tiny coffee shop in Atlanta |
+| [xyz](https://xyz.sorosliu.xyz) | 光锥 (Lightcone), an unofficial desktop web client for the 小宇宙 podcast app |
 | [cosmos-wormhole](https://cosmos-wormhole.sorosliu.xyz) | Unofficial Python SDK for the 小宇宙 podcast API |
 | [slides](https://slides.sorosliu.xyz) | Slide decks from talks I've given |
 | [wereadou](https://wereadou.sorosliu.xyz) | Browser extension showing WeRead availability on Douban book pages |
